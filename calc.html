@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <link rel = "stylesheet" href = calc.css>
+    </head>
+    <body>
+        <h1>Standard Calculator</h1>
+        <div class ="terminal">
+            <p>
+                <span id="historyEl" class="history"></span>
+                <br>
+                <span id="inputEl" class="input"> 0 </span>
+            </p>
+        </div>
+        <button class="operation" onclick="percent()">%</button>
+        <button class="operation" onclick="clearEntry()">CE</button>
+        <button class="operation" onclick="clearAll()">CA</button>
+        <button class="operation" onclick="backspace()">⌫</button>
+        <br>
+        <button class="operation" onclick="oneOverx()">1/x</button>
+        <button class="operation" onclick="square()">x²</button>
+        <button class="operation" onclick="sqrt()">√</button>
+        <button class="operation" onclick="divide()">÷</button>
+        <br>
+        <button class="value" onclick="seven()">7</button>
+        <button class="value" onclick="eight()">8</button>
+        <button class="value" onclick="nine()">9</button>
+        <button class="operation" onclick="multiply()">×</button>
+        <br>
+        <button class="value" onclick="four()">4</button>
+        <button class="value" onclick="five()">5</button>
+        <button class="value" onclick="six()">6</button>
+        <button class="operation" onclick="subtract()">−</button>
+        <br>
+        <button class="value" onclick="one()">1</button>
+        <button class="value" onclick="two()">2</button>
+        <button class="value" onclick="three()">3</button>
+        <button class="operation" onclick="add()">+</button>
+        <br>
+        <button class="value" onclick="signChange()">±</button>
+        <button class="value" onclick="zero()">0</button>
+        <button class="value" onclick="dot()">.</button>
+        <button class="equals" onclick="equals()">=</button>
+        <script src="calc.js"></script>
+    </body>
+</html>

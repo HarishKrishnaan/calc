@@ -1,0 +1,11 @@
+//Problem: pressing operator sign shouldn't continuously operate, just assign operator, 
+//Solution 1: change to have to use = to repetitively operate instead of allowing continuous pressing of operation button.
+//Solution 2: cases to identify:
+//no text:
+    //if historyEl = ""
+//previous operation with equals:
+    //if historyEl.textContent.includes("=")
+//previous operation with equals:
+    //else
+//Problem: switching between operations doesn't work, sets left side to "" and results in NaN error, 
+//Solution: fix ending state of each function to aid in transitioning between functions
