@@ -149,36 +149,36 @@ function equals() {
 
 //two value mathematical functions
 function add() {
-    // if(historyEl.textContent.includes("+")&&((historyEl.textContent.includes("="))||(!historyEl.textContent.includes("=")))) {
-    //     let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("+")-1))
-    //     let b = parseFloat(inputEl.textContent)
-    //     answer = a+b
-    //     historyEl.textContent = answer + " + "
-    //     inputEl.textContent = answer
-    //     input = ""
-    // }
-    // else {
-    //     historyEl.textContent = ""
-    //     left = input
-    //     historyEl.textContent = left + " + "
-    //     input = ""
-    // }
-
-    if(historyEl == "") {
-        historyEl.textContent = inputEl + " + "
-        input = ""
-        console.log(historyEl.textContent)
-    }
-    else if(historyEl.textContent.includes("=")) {
-        let a = parseFloat(inputEl.textContent)
-        let b = parseFloat(historyEl.textContent.substring((historyEl.textContent.indexOf("+")||historyEl.textContent.indexOf("-")||historyEl.textContent.indexOf("×")||historyEl.textContent.indexOf("÷"))+1,historyEl.textContent.indexOf("=")-1))
+    if(historyEl.textContent.includes("+")&&((historyEl.textContent.includes("="))||(!historyEl.textContent.includes("=")))) {
+        let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("+")-1))
+        let b = parseFloat(inputEl.textContent)
         answer = a + b
         historyEl.textContent = answer + " + "
+        inputEl.textContent = answer
         input = ""
     }
     else {
-        
+        historyEl.textContent = ""
+        left = input
+        historyEl.textContent = left + " + "
+        input = ""
     }
+
+    // if(historyEl == "") {
+    //     historyEl.textContent = inputEl + " + "
+    //     input = ""
+    //     console.log(historyEl.textContent)
+    // }
+    // else if(historyEl.textContent.includes("=")) {
+    //     let a = parseFloat(inputEl.textContent)
+    //     let b = parseFloat(historyEl.textContent.substring((historyEl.textContent.indexOf("+")||historyEl.textContent.indexOf("-")||historyEl.textContent.indexOf("×")||historyEl.textContent.indexOf("÷"))+1,historyEl.textContent.indexOf("=")-1))
+    //     answer = a + b
+    //     historyEl.textContent = answer + " + "
+    //     input = ""
+    // }
+    // else {
+        
+    // }
 }
 
 function subtract() {
