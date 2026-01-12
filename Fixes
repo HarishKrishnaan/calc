@@ -3,11 +3,12 @@
 //operations with equals that take the answer and continue operating:
     //if historyEl.textContent.includes("=", "/", "(", ")")
         //history becomes answer + next operation and input becomes answer
-//operations
+//normal operations where there is no equals, switching occurs:
     //else if historyEl.textContent.includes("+", "-", "×", "÷")
         // left side of operation stays and the operation sign changes to whichever button is pressed, equals handles the output
-//previous operation with equals:
+        //once new number is input, creates answer onclick of + and makes historyEl = answer + " + " and inputEL = answer
+//empty history where historyEl == "":
     //else
-        //history becomes
+        //history becomes input + "operation"
 //Problem: switching between operations doesn't work, sets left side to "" and results in NaN error, 
 //Solution: fix ending state of each function to aid in transitioning between functions

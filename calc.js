@@ -99,7 +99,7 @@ function equals() {
         historyEl.textContent = a + " + " + b + " = "
         inputEl.textContent = answer
     }
-    //subtraction - not working: fix to ignore "-" of negative values on the left side
+    //subtraction - not working:(use " - " instead of "-" and if historyEl.textContent.includes("-") && historyEl.textContent.includes(" - "): find index of " - ")
     if(historyEl.textContent.includes("-")&&(!historyEl.textContent.includes("="))) {
         let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("-")-1))
         let b = parseFloat(inputEl.textContent)
@@ -147,88 +147,88 @@ function equals() {
 }
 //Issues with multiplying and dividing operations when left side of operation (a) becomes negative.
 
-//two value mathematical functions
+//two value mathematical functions - else is working, if statements not working correctly
 function add() {
-    if(historyEl.textContent.includes("+")&&((historyEl.textContent.includes("="))||(!historyEl.textContent.includes("=")))) {
-        let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("+")-1))
-        let b = parseFloat(inputEl.textContent)
+    if ((historyEl.textContent.includes(" = ")||historyEl.textContent.includes("(")||historyEl.textContent.includes(")")||historyEl.textContent.includes("/"))&&(!historyEl.textContent.includes(" + ")||!historyEl.textContent.includes(" - ")||!historyEl.textContent.includes(" × ")||!historyEl.textContent.includes(" ÷ "))) {
+
+    }
+    else if(historyEl.textContent.includes(" + ")||historyEl.textContent.includes(" - ")||historyEl.textContent.includes(" × ")||historyEl.textContent.includes(" ÷ ")) {
+        if(historyEl.textContent.includes(" + ")) {
+            let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("+")-1))
+        }
+        else if(historyEl.textContent.includes(" - ")) {
+            let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("-")-1))
+        }
+        else if(historyEl.textContent.includes(" × ")) {
+            let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("×")-1))
+        }
+        else {
+            let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("÷")-1))
+        }
+        let b = parseFloat(historyEl.textContent.substring(inputEl.textContent))
         answer = a + b
-        historyEl.textContent = answer + " + "
-        inputEl.textContent = answer
-        input = ""
+        historyEl.textContent
     }
     else {
-        historyEl.textContent = ""
-        left = input
-        historyEl.textContent = left + " + "
+        historyEl.textContent = input + " + "
         input = ""
     }
-
-    // if(historyEl == "") {
-    //     historyEl.textContent = inputEl + " + "
-    //     input = ""
-    //     console.log(historyEl.textContent)
-    // }
-    // else if(historyEl.textContent.includes("=")) {
-    //     let a = parseFloat(inputEl.textContent)
-    //     let b = parseFloat(historyEl.textContent.substring((historyEl.textContent.indexOf("+")||historyEl.textContent.indexOf("-")||historyEl.textContent.indexOf("×")||historyEl.textContent.indexOf("÷"))+1,historyEl.textContent.indexOf("=")-1))
-    //     answer = a + b
-    //     historyEl.textContent = answer + " + "
-    //     input = ""
-    // }
-    // else {
-        
-    // }
 }
 
 function subtract() {
-    if(historyEl.textContent.includes("-")&&((historyEl.textContent.includes("="))||(!historyEl.textContent.includes("=")))) {
-        let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("-",1)-1))
+    if(historyEl.textContent.includes("+")||historyEl.textContent.includes("-")||historyEl.textContent.includes("×")||historyEl.textContent.includes("÷")) {
+        let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("-")-1))
         let b = parseFloat(inputEl.textContent)
-        answer = a-b
-        historyEl.textContent = answer + " - "
-        inputEl.textContent = answer
+        historyEl.textContent = a + " - "
         input = ""
+        console.log("top")
+        console.log(historyEl.textContent)
     }
     else {
         historyEl.textContent = ""
         left = input
         historyEl.textContent = left + " - "
         input = ""
+        console.log("bottom")
+        console.log(historyEl.textContent)
     }
 }
 
 function multiply() {
-    if(historyEl.textContent.includes("×")&&((historyEl.textContent.includes("="))||(!historyEl.textContent.includes("=")))) {
+    if(historyEl.textContent.includes("+")||historyEl.textContent.includes("-")||historyEl.textContent.includes("×")||historyEl.textContent.includes("÷")) {
         let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("×")-1))
         let b = parseFloat(inputEl.textContent)
-        answer = a * b
-        historyEl.textContent = answer + " × "
-        inputEl.textContent = answer
+        historyEl.textContent = a + " × "
         input = ""
+        console.log("top")
+        console.log(historyEl.textContent)
     }
     else {
         historyEl.textContent = ""
         left = input
         historyEl.textContent = left + " × "
         input = ""
+        console.log("bottom")
+        console.log(historyEl.textContent)
     }
 }
 
 function divide() {
-    if(historyEl.textContent.includes("÷")&&((historyEl.textContent.includes("="))||(!historyEl.textContent.includes("=")))) {
+    if(historyEl.textContent.includes("+")||historyEl.textContent.includes("-")||historyEl.textContent.includes("×")||historyEl.textContent.includes("÷")) {
         let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("÷")-1))
         let b = parseFloat(inputEl.textContent)
-        answer = a / b
-        historyEl.textContent = answer + " ÷ "
-        inputEl.textContent = answer
+        historyEl.textContent = a + " ÷ "
         input = ""
+        console.log("top")
+        console.log(historyEl.textContent)
     }
     else {
         historyEl.textContent = ""
         left = input
         historyEl.textContent = left + " ÷ "
         input = ""
+        console.log("bottom")
+        console.log(historyEl.textContent)
     }
 }
 
