@@ -99,7 +99,7 @@ function equals() {
         historyEl.textContent = a + " + " + b + " = "
         inputEl.textContent = answer
     }
-    //subtraction - not working:(use " - " instead of "-" and if historyEl.textContent.includes("-") && historyEl.textContent.includes(" - "): find index of " - ")
+    //subtraction - not working:(use " - " instead of "-" and if historyEl.textContent.includes("-") && historyEl.textContent.includes(" - "): find 2nd index of "-" since indexOf doesn't count whitespace)
     if(historyEl.textContent.includes("-")&&(!historyEl.textContent.includes("="))) {
         let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("-")-1))
         let b = parseFloat(inputEl.textContent)
@@ -144,13 +144,24 @@ function equals() {
         historyEl.textContent = a + " ÷ " + b + " = "
         inputEl.textContent = answer
     }
+    //one over input - needs to be implemented
+    //input^2 - needs to be implemented
+    //sqrt(input) - needs to be implemented
 }
 //Issues with multiplying and dividing operations when left side of operation (a) becomes negative.
 
 //two value mathematical functions - else is working, if statements not working correctly
 function add() {
-    if ((historyEl.textContent.includes(" = ")||historyEl.textContent.includes("(")||historyEl.textContent.includes(")")||historyEl.textContent.includes("/"))&&(!historyEl.textContent.includes(" + ")||!historyEl.textContent.includes(" - ")||!historyEl.textContent.includes(" × ")||!historyEl.textContent.includes(" ÷ "))) {
-
+    //if history contains a single number operation and an equals sign, take the answer and add " + " to it
+    if ((historyEl.textContent.includes(" = ")&&(historyEl.textContent.includes("(")||historyEl.textContent.includes(")")||historyEl.textContent.includes("/")))&&(!historyEl.textContent.includes(" + ")&&!historyEl.textContent.includes(" - ")&&!historyEl.textContent.includes(" × ")&&!historyEl.textContent.includes(" ÷ "))) {
+        let answer = inputEl.textContent
+        historyEl.textContent = answer + " + "
+        input = ""
+    }
+    //if history does not contain an
+    else if ((historyEl.textContent.includes(" = ")||historyEl.textContent.includes("(")||historyEl.textContent.includes(")")||historyEl.textContent.includes("/"))&&(!historyEl.textContent.includes(" + ")&&!historyEl.textContent.includes(" - ")&&!historyEl.textContent.includes(" × ")&&!historyEl.textContent.includes(" ÷ "))) {
+        historyEl.textContent += " + "
+        input = ""
     }
     else if(historyEl.textContent.includes(" + ")||historyEl.textContent.includes(" - ")||historyEl.textContent.includes(" × ")||historyEl.textContent.includes(" ÷ ")) {
         if(historyEl.textContent.includes(" + ")) {
@@ -162,12 +173,21 @@ function add() {
         else if(historyEl.textContent.includes(" × ")) {
             let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("×")-1))
         }
-        else {
+        else { //division
             let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("÷")-1))
         }
         let b = parseFloat(historyEl.textContent.substring(inputEl.textContent))
-        answer = a + b
-        historyEl.textContent
+        let answer = a + b
+        //if input is empty, aka no new inputEl is present, change operation to "+" without changing anything else
+        if(input == "") {
+            historyEl.textContent = a + " + "
+        }
+        //if new input has been made, compute answer and edit historyEl to show calculation. reset input once complete
+        else {
+            historyEl.textContent = answer + " + "
+            inputEl.textContent = answer
+            input = ""
+        }
     }
     else {
         historyEl.textContent = input + " + "

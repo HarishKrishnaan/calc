@@ -1,14 +1,52 @@
-//Problem: pressing operator sign shouldn't continuously operate, just assign operator, 
-//Solution 2: cases to identify:
-//operations with equals that take the answer and continue operating:
-    //if historyEl.textContent.includes("=", "/", "(", ")")
-        //history becomes answer + next operation and input becomes answer
-//normal operations where there is no equals, switching occurs:
-    //else if historyEl.textContent.includes("+", "-", "×", "÷")
-        // left side of operation stays and the operation sign changes to whichever button is pressed, equals handles the output
-        //once new number is input, creates answer onclick of + and makes historyEl = answer + " + " and inputEL = answer
-//empty history where historyEl == "":
-    //else
-        //history becomes input + "operation"
-//Problem: switching between operations doesn't work, sets left side to "" and results in NaN error, 
-//Solution: fix ending state of each function to aid in transitioning between functions
+/*
+add() - notes to implement add function as a template for all other normal operation functions
+
+single digit operations without = present:
+
+    if historyEl.textContent.includes("/", "(", ")")
+
+        historyEl becomes answer + next operation and inputEl becomes answer
+
+single digit operations with "+", "-", "×", "÷" and ("=") present (no cases where single digit ops with = exist without double digit ops)
+
+    else if historyEl.textContent.includes("=", "/", "(", ")", "+", "-", "×", "÷","=")
+
+        historyEl becomes answer + next operation and inputEl becomes answer
+
+normal operations where there is no equals or single digit operations, switching occurs:
+
+    else if historyEl.textContent.includes("+", "-", "×", "÷")
+
+        left side of operation stays and the operation sign changes to whichever button is 	pressed, equals handles the output
+	    once new number is input, creates answer onclick of + and makes historyEl = answer + " + " and inputEL = answer
+
+normal operations where = exists with no single digit operations:
+	
+	else if historyEl.textContent.includes("+", "-", "×", "÷" && "=")
+		
+		left side of operation becomes answer and operation sign changes to whichever button is pressed
+		
+
+empty history where historyEl == "":
+
+    else
+
+        history becomes input + "operation"
+
+equals() - notes to mainly update the equals function so that it knows how to parse historyEl even with "/", "(", ")" present, as to not result in NaN values
+
+
+
+Notes:
+.includes() - counts white space
+.indexOf() - DOES NOT count white space
+
+
+
+
+
+
+
+
+
+*/
