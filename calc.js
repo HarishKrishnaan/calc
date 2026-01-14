@@ -148,51 +148,26 @@ function equals() {
     //input^2 - needs to be implemented
     //sqrt(input) - needs to be implemented
 }
-//Issues with multiplying and dividing operations when left side of operation (a) becomes negative.
 
-//two value mathematical functions - else is working, if statements not working correctly
+//two value mathematical functions - complete rework in progress, need to check if bounds are correct and begin logic
 function add() {
-    //if history contains a single number operation and an equals sign, take the answer and add " + " to it
-    if ((historyEl.textContent.includes(" = ")&&(historyEl.textContent.includes("(")||historyEl.textContent.includes(")")||historyEl.textContent.includes("/")))&&(!historyEl.textContent.includes(" + ")&&!historyEl.textContent.includes(" - ")&&!historyEl.textContent.includes(" × ")&&!historyEl.textContent.includes(" ÷ "))) {
-        let answer = inputEl.textContent
-        historyEl.textContent = answer + " + "
-        input = ""
+    if((historyEl.textContent.includes("/")||historyEl.textContent.includes("(")||historyEl.textContent.includes(")"))&&(!historyEl.textContent.includes("=")&&!historyEl.textContent.includes("+")&&!historyEl.textContent.includes(" - ")&&!historyEl.textContent.includes("×")&&!historyEl.textContent.includes("÷"))) {
+
     }
-    //if history does not contain an
-    else if ((historyEl.textContent.includes(" = ")||historyEl.textContent.includes("(")||historyEl.textContent.includes(")")||historyEl.textContent.includes("/"))&&(!historyEl.textContent.includes(" + ")&&!historyEl.textContent.includes(" - ")&&!historyEl.textContent.includes(" × ")&&!historyEl.textContent.includes(" ÷ "))) {
-        historyEl.textContent += " + "
-        input = ""
+    else if((historyEl.textContent.includes("+")||historyEl.textContent.includes(" - ")||historyEl.textContent.includes("×")||historyEl.textContent.includes("÷"))&&(historyEl.textContent.includes("="))&&(historyEl.textContent.includes("/")||historyEl.textContent.includes("(")||historyEl.textContent.includes(")"))) {
+
     }
-    else if(historyEl.textContent.includes(" + ")||historyEl.textContent.includes(" - ")||historyEl.textContent.includes(" × ")||historyEl.textContent.includes(" ÷ ")) {
-        if(historyEl.textContent.includes(" + ")) {
-            let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("+")-1))
-        }
-        else if(historyEl.textContent.includes(" - ")) {
-            let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("-")-1))
-        }
-        else if(historyEl.textContent.includes(" × ")) {
-            let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("×")-1))
-        }
-        else { //division
-            let a = parseFloat(historyEl.textContent.substring(0,historyEl.textContent.indexOf("÷")-1))
-        }
-        let b = parseFloat(historyEl.textContent.substring(inputEl.textContent))
-        let answer = a + b
-        //if input is empty, aka no new inputEl is present, change operation to "+" without changing anything else
-        if(input == "") {
-            historyEl.textContent = a + " + "
-        }
-        //if new input has been made, compute answer and edit historyEl to show calculation. reset input once complete
-        else {
-            historyEl.textContent = answer + " + "
-            inputEl.textContent = answer
-            input = ""
-        }
+    else if((historyEl.textContent.includes("+")||historyEl.textContent.includes(" - ")||historyEl.textContent.includes("×")||historyEl.textContent.includes("÷"))&&(!historyEl.textContent.includes("=")&&!historyEl.textContent.includes("/")&&!historyEl.textContent.includes("(")&&!historyEl.textContent.includes(")"))) {
+
+    }
+    else if ((historyEl.textContent.includes("+")||historyEl.textContent.includes(" - ")||historyEl.textContent.includes("×")||historyEl.textContent.includes("÷"))&&(historyEl.textContent.includes("="))&&(!historyEl.textContent.includes("/")&&!historyEl.textContent.includes("(")&&!historyEl.textContent.includes(")"))) {
+
     }
     else {
-        historyEl.textContent = input + " + "
-        input = ""
+        historyEl.textContent = inputEl.textContent + " + "
+
     }
+    input = ""
 }
 
 function subtract() {
