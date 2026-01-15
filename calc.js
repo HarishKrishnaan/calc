@@ -152,7 +152,9 @@ function equals() {
 //two value mathematical functions - complete rework in progress, need to check if bounds are correct and begin logic
 function add() {
     if((historyEl.textContent.includes("/")||historyEl.textContent.includes("(")||historyEl.textContent.includes(")"))&&(!historyEl.textContent.includes("=")&&!historyEl.textContent.includes("+")&&!historyEl.textContent.includes(" - ")&&!historyEl.textContent.includes("×")&&!historyEl.textContent.includes("÷"))) {
-
+        answer = parseFloat(inputEl.textContent)
+        historyEl.textContent = answer + " + "
+        input = ""
     }
     else if((historyEl.textContent.includes("+")||historyEl.textContent.includes(" - ")||historyEl.textContent.includes("×")||historyEl.textContent.includes("÷"))&&(historyEl.textContent.includes("="))&&(historyEl.textContent.includes("/")||historyEl.textContent.includes("(")||historyEl.textContent.includes(")"))) {
 
@@ -231,8 +233,9 @@ function divide() {
 //one over input - working
 function oneOverx() {
     historyEl.textContent = "1/( " + input + " )"
-    input = 1 / input
+    answer = 1 / input
     inputEl.textContent = input
+    input = answer
 }
 //square - working, but history could show contatenated sqr() around the origional input instead of only 1 sqr() with the input constantly changing
 function square() {
@@ -241,12 +244,31 @@ function square() {
     historyEl.textContent = "sqr( " + input + " )"
     input = answer
 }
-//square root - working, could use the same tweak as square
+//square root - not working, could use the same tweak as square
 function sqrt() {
-    answer = Math.sqrt(input)
-    inputEl.textContent = answer
-    historyEl.textContent = "√( " + input + " )"
-    input = answer
+    if ((historyEl.textContent == ""||history == 0||historyEl.textContent.includes("/")||historyEl.textContent.includes("(")||historyEl.textContent.includes(")")) && (!historyEl.textContent.includes("+")&&!historyEl.textContent.includes(" - ")&&!historyEl.textContent.includes("×")&&!historyEl.textContent.includes("÷"))) {
+        answer = Math.sqrt(input)
+        inputEl.textContent = answer
+        historyEl.textContent = "√( " + input + " )"
+        input = answer
+        console.log("first")
+        console.log(history)
+    }
+    else if(historyEl.textContent.includes("=")) {
+        let inputVal = parseFloat(inputEl.textContent)
+        answer = Math.sqrt(inputVal)
+        historyEl.textContent = "√( " + inputVal + " )"
+        inputEl.textContent = answer
+        input = answer
+        console.log("second")
+        console.log(history)
+    }
+    else {
+        if(historyEl.textContent.includes("+")) { //a or b or both could have an infinite number of "(", ")" characters in them, so we need to make 2 cases for each single num operator that calculates the sqrt of b recursively.
+            let a = historyEl.textContent.substring(0,historyEl.textContent.indexOf("+")-1)//placeholder - doesn't catch all cases
+            let b = historyEl.textContent.substring(0,historyEl.textContent.indexOf("+")-1)//placeholder - doesn't catch all cases
+        }
+    }
 }
 
 function percent() {

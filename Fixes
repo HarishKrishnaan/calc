@@ -35,6 +35,20 @@ empty history where historyEl == "":
 
 equals() - notes to mainly update the equals function so that it knows how to parse historyEl even with "/", "(", ")" present, as to not result in NaN values
 
+sqrt() - if 2 number op exists before sqrt is pressed, it deletes that part of the history and only considers most recent input
+
+    if history == "" || historyEl.textContent.includes("/", "(", ")") 
+
+        answer becomes sqrt of input, inputEl becomes answer, historyEl becomes input + operation
+
+    else if historyEl.textContent.includes("=")
+
+        history as sqrt(answer), and calculates input as sqrt(answer)
+
+    else --equals() function has to know how to handle this case
+
+        history becomes a(left side of operation) + operation + sqrt(inputEl) and input becomes sqrt(inputEl), input only becomes a + b when equals is pressed. 
+
 
 
 Notes:
